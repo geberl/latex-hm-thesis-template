@@ -1,0 +1,206 @@
+% ------------------------------------------------------------------
+% Setup / Dokumententyp
+% ------------------------------------------------------------------
+\documentclass[11pt,oneside,ngerman]{book}
+% ------------------------------------------------------------------
+% Setup / Packages allgemein
+% ------------------------------------------------------------------
+\usepackage{mathptmx}
+\usepackage{helvet}
+%\usepackage{courier}
+\renewcommand{\familydefault}{\sfdefault} % Serifenlose Schrift
+%\renewcommand{\familydefault}{\rmdefault} % Serife Schrift
+%\renewcommand{\familydefault}{\ttdefault} % Fixed width Schrift
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{tmargin=4cm,bmargin=2cm,lmargin=4cm,rmargin=2cm}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{graphicx}
+\graphicspath{{pictures/}}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage[ngerman]{babel}
+\usepackage{mathtools}
+\setlength{\parindent}{0pt}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\usepackage{fixltx2e}
+\usepackage[printonlyused]{acronym}
+\usepackage{ragged2e}
+\usepackage[left]{eurosym}
+\hyphenpenalty=10000 % Silbentrennung ausschalten 1
+\exhyphenpenalty=10000 % Silbentrennung ausschalten 2
+\usepackage{blindtext}
+\usepackage{float}
+\usepackage[absolute]{textpos}
+% ------------------------------------------------------------------
+% Setup / Package leere Seite einfügen
+% ------------------------------------------------------------------
+\usepackage{afterpage}
+\newcommand\blankpage{
+    \null
+    \thispagestyle{empty}
+    \addtocounter{page}{-1}
+    \newpage}
+% ------------------------------------------------------------------
+% Setup / Package zweispaltige Aufzählungen
+% http://www.mrunix.de/forums/showthread.php?t=71741
+% ------------------------------------------------------------------
+\usepackage{enumitem}
+\usepackage{multicol}
+\newlist{twoenum}{itemize}{4}
+\SetEnumitemKey{twocol}{
+before=\raggedcolumns\begin{multicols}{2},
+after=\end{multicols}}
+\setlist[twoenum]{label=$\bullet$,twocol}
+% ------------------------------------------------------------------
+% Setup / Package farbige Tabellenhintergründe + Fußnoten
+% ------------------------------------------------------------------
+\usepackage{color}
+\usepackage{colortbl}
+\definecolor{minusminus}{rgb}{0.97,0.41,0.42}
+\definecolor{minus}{rgb}{0.98,0.67,0.47}
+\definecolor{null}{rgb}{1,0.92,0.51}
+\definecolor{plus}{rgb}{0.69,0.84,0.50}
+\definecolor{plusplus}{rgb}{0.39,0.75,0.48}
+\definecolor{plusplus}{rgb}{0.39,0.75,0.48}
+\definecolor{raciblue}{rgb}{0.71,0.8,0.89}
+\definecolor{mediumgrey}{rgb}{0.5,0.5,0.5}
+\definecolor{lightgrey}{rgb}{0.75,0.75,0.75}
+\usepackage{threeparttable}
+% ------------------------------------------------------------------
+% Setup / Package URL in Literaturverzeichnis
+% ------------------------------------------------------------------
+\usepackage{url}
+%% Define a new 'leo' style for the package that will use a smaller font.
+\makeatletter
+\def\url@leostyle{%
+  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\small\ttfamily}}}
+\makeatother
+%% Now actually use the newly defined style.
+\urlstyle{leo}
+% ------------------------------------------------------------------
+% Setup / Packages PDF-Generierung
+% ------------------------------------------------------------------
+\usepackage{hyperref}
+\hypersetup{
+    unicode=true,           		% non-Latin characters in Acrobat's bookmarks
+    pdftoolbar=true,        		% show Acrobat's toolbar?
+    pdfmenubar=true,        		% show Acrobat's menu?
+    pdffitwindow=true,	     		% window fit to page when opened
+    pdfstartview={FitH},   			% fits the width of the page to the window
+    pdftitle={Der Titel der Diplomarbiet steht hier}, % title
+    pdfauthor={Günther Eberl},  	% author
+    pdfsubject={Diplomarbeit, eingereicht am 31.05.2013, Abc AG, Spezielle Angelegenheiten}, % subject
+    pdfcreator={gVim, Miktex 2.9.4250}, % creator of the document
+    pdfproducer={PdfLaTeX},			% producer of the document
+    pdfkeywords={BPMN},             % list of keywords
+    pdfnewwindow=true,      		% links in new window
+    colorlinks=true,        		% false: boxed links; true: colored links
+    linkcolor=black,        		% color of internal links
+    citecolor=black,        		% color of links to bibliography
+    filecolor=red,      			% color of file links
+    urlcolor=blue,         			% color of external links
+    bookmarksopen=true
+}
+\usepackage[numbered]{bookmark}
+\usepackage[all]{hypcap}
+% ------------------------------------------------------------------
+% Setup / Packages Kopf- und Fußzeilen
+% ------------------------------------------------------------------
+\usepackage{fancyhdr}
+\setlength{\headheight}{15.3pt}
+\pagestyle{fancy}
+\cfoot[\thepage]{\thepage}
+% ------------------------------------------------------------------
+% Setup / Schräge Tabellenkopfzeilen für RACI Diagramme
+% ------------------------------------------------------------------
+\newcommand*{\zerosizebox}[2][l]{\raisebox{0pt}[0pt][0pt]{\makebox[0pt][#1]{#2}}}
+\newcommand*{\slantedlabel}[1]{\multicolumn{1}{c}{\rotatebox{45}{\zerosizebox{#1}}}}
+% ------------------------------------------------------------------
+% Dokument beginnen
+% ------------------------------------------------------------------
+\begin{document}
+\pagenumbering{Roman}
+\include{inc_titlepage}
+\newpage
+\afterpage{\blankpage}
+% ------------------------------------------------------------------
+% Sperrvermerk
+% ------------------------------------------------------------------
+\newpage
+\include{inc_sperrvermerk}
+\afterpage{\blankpage}
+% ------------------------------------------------------------------
+% Selbstständigkeitserklärung
+% ------------------------------------------------------------------
+\newpage
+\include{inc_selbstaendigkeitserklaerung}
+\afterpage{\blankpage}
+% ------------------------------------------------------------------
+% Abstract
+% ------------------------------------------------------------------
+\newpage
+\include{inc_abstract}
+% ------------------------------------------------------------------
+% Inhaltsverzeichnis
+% ------------------------------------------------------------------
+\newpage
+\tableofcontents{}
+\addcontentsline{toc}{chapter}{Inhaltsverzeichnis}
+\markboth{Inhaltsverzeichnis}{Inhaltsverzeichnis}
+% ------------------------------------------------------------------
+% Abbildungsverzeichnis
+% ------------------------------------------------------------------
+\newpage
+\listoffigures
+\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+\markboth{Abbildungsverzeichnis}{Abbildungsverzeichnis}
+% ------------------------------------------------------------------
+% Tabellenverzeichnis
+% ------------------------------------------------------------------
+\newpage
+\listoftables
+\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+\markboth{Tabellenverzeichnis}{Tabellenverzeichnis}
+% ------------------------------------------------------------------
+% Abkürzungsverzeichnis
+% ------------------------------------------------------------------
+\newpage
+\include{inc_abkuerzungsverzeichnis}
+% ------------------------------------------------------------------
+% 1. Einleitung
+% ------------------------------------------------------------------
+\newpage
+\pagenumbering{arabic}
+\include{inc_kapitel_1}
+% ------------------------------------------------------------------
+% 2. Ein weiteres Kapitel
+% ------------------------------------------------------------------
+\newpage
+\include{inc_kapitel_2}
+% ------------------------------------------------------------------
+% 3. 4. 5. ... Weitere Kapitel hier anfügen
+% ------------------------------------------------------------------
+% 
+% ------------------------------------------------------------------
+% Literaturverzeichnis
+% ------------------------------------------------------------------
+\newpage
+\begingroup
+\RaggedRight
+\bibliographystyle{alpha}
+\bibliography{literatur}
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+\markboth{Literaturverzeichnis}{Literaturverzeichnis}
+\endgroup
+% ------------------------------------------------------------------
+% Anhang
+% ------------------------------------------------------------------
+\newpage
+\include{inc_anhang}
+% ------------------------------------------------------------------
+% Ende
+% ------------------------------------------------------------------
+\end{document}

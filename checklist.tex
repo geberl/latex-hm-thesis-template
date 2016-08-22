@@ -1,0 +1,127 @@
+% ------------------------------------------------------------------
+% Setup / Dokumententyp
+% ------------------------------------------------------------------
+\documentclass[11pt,oneside,ngerman]{book}
+% ------------------------------------------------------------------
+% Setup / Packages allgemein
+% ------------------------------------------------------------------
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{tmargin=2.5cm,bmargin=2cm,lmargin=2.5cm,rmargin=2.5cm}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage[ngerman]{babel}
+\setlength{\parindent}{0pt}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\usepackage[geometry]{ifsym}
+\usepackage{amsmath}
+\usepackage{amssymb}
+% ------------------------------------------------------------------
+% Setup / Packages PDF-Generierung
+% ------------------------------------------------------------------
+\usepackage{hyperref}
+\hypersetup{
+    unicode=true,           		% non-Latin characters in Acrobat's bookmarks
+    pdftoolbar=true,        		% show Acrobat's toolbar?
+    pdfmenubar=true,        		% show Acrobat's menu?
+    pdffitwindow=true,	     		% window fit to page when opened
+    pdfstartview={FitH},   		% fits the width of the page to the window
+    pdftitle={?},			% title
+    pdfauthor={Günther Eberl},  	% author
+    pdfsubject={?},			% subject of the document
+    pdfcreator={gVim, Miktex 2.9.4250}, % creator of the document
+    pdfproducer={PdfLaTeX},		% producer of the document
+    pdfkeywords={?}			% list of keywords
+    pdfnewwindow=true,      		% links in new window
+    colorlinks=true,        		% false: boxed links; true: colored links
+    linkcolor=black,        		% color of internal links
+    citecolor=black,        		% color of links to bibliography
+    filecolor=red,      		% color of file links
+    urlcolor=blue,         		% color of external links
+    bookmarksopen=true			% open the bookmarks panel when Acrobat starts
+}
+% ------------------------------------------------------------------
+% Dokument beginnen
+% ------------------------------------------------------------------
+\begin{document}
+
+\pagestyle{empty}
+
+% Angekreuztes Kästchen:
+%\item [\rlap{\Cross}\BigSquare]
+
+
+\paragraph{Stil}
+
+\begin{itemize}
+	\item [\BigSquare] \textbf{Hochsprache:} Nutzen. Genauigkeit. Technische/sachliche Formulierung.
+	\item [\BigSquare] \textbf{Kürzen:} Wo möglich. Keine Redundanz. So einfach und klar wie möglich. Satzlänge maximal 2-3 Zeilen.
+	\item [\BigSquare] \textbf{Fachwörter:} Bewusst einsetzen, auf ein Stück pro Satz beschränken.
+	\item [\BigSquare] \textbf{Nullwörter:} Entfernen. Verhindern Präzission.
+		\begin{itemize}
+			\item [\FilledSmallCircle] Schlüsselwörter: Wirklich, nun, ja, gar, so, ungefähr, oft, obwohl, als wenn, beinahe, bis hin zu, sehr, je, manchmal, nur.
+		\end{itemize}
+	\item [\BigSquare] \textbf{Relativ- und Schachtelsätze:} Auflösen durch Zweiteilen. Maximal ein Komma pro Satz.
+	\item [\BigSquare] \textbf{Anglizismen:} Wenn irgendwie möglich vermeiden.  
+		\begin{itemize}
+			\item [\FilledSmallCircle] Nur zugelassen, wenn der Begriff ein Fachwort darstellt und keine äquivalente Übersetzung existiert (z.B. Compiler \(\neq\) Übersetzer).
+			\item [\FilledSmallCircle] Verben sinngemäß übersetzen, Verwendung von 'geparsed' oder 'gehashed' ist nicht zulässig.
+		\end{itemize}
+	\item [\BigSquare] \textbf{Abkürzungen:} Neutrale ausschreiben, außer wenn griechischem Ursprungs. Fachbezogene bei erster Verwendung definieren.
+		\begin{itemize}
+			\item [\FilledSmallCircle] Verboten: bzw., z.B., usw.
+			\item [\FilledSmallCircle] Erlaubt: etc., ca.
+		\end{itemize}
+	\item [\BigSquare] \textbf{Klare Begriffe:} Nicht nur 'System', sondern 'Ticketsystem', 'Betriebssystem' oder 'Server'. Präzise sagen was gemeint ist.
+	\item [\BigSquare] \textbf{Personifizierungen:} Nicht verwenden. 'Für OBD-Fehlerverwaltung ist ...' \begin{math}\rightarrow\end{math} 'Im Bereich OBD-Fehlerverwaltung ist ...'
+	\item [\BigSquare] \textbf{Passiv:} Form nicht nutzen. 'Ein Fehler wird ausgelöst.' \begin{math}\rightarrow\end{math} 'Die Verschlechterung der Abgasqualität löst einen Fehler aus.'
+		\begin{itemize}
+			\item [\FilledSmallCircle] Bringt Information rein \textit{wer} etwas macht und \textit{warum}. Präziser.
+			\item [\FilledSmallCircle] Schlüsselwörter: wird, wurde, geworden, gemacht.
+		\end{itemize}
+
+	\item [\BigSquare] \textbf{Adjektive:} Entfernen. Bringt Wissenschaftlichkeit, Kürze, Trockenheit, Knackigkeit. Verhindert Blumigkeit, Schwülstigkeit, Werbungs-Stil. Lebendigkeit entsteht über Verben.
+		\begin{itemize}
+			\item [\FilledSmallCircle] Verboten: 'Der \textit{tolle} Editor', 'Der \textit{großartige} Compiler'.
+			\item [\FilledSmallCircle] Stattdessen: Vorzüge nennen, konkret sein.
+		\end{itemize}
+\pagebreak
+	\item [\BigSquare] \textbf{Substantivierte Verben:} Vermeiden, Satz umformulieren.
+		\begin{itemize}
+			\item [\FilledSmallCircle] Erkennbar durch Endung '-ung'
+			\item [\FilledSmallCircle] 'Durch die \textit{Compilierung} wird die Software zu einem Binary.' \begin{math}\rightarrow\end{math} 'Der \textit{gcc} (SUBJEKT) \textit{kompiliert} (VERB) \textit{die Sourcen} (OBJEKT) zu einem Binary (ZIEL).'
+		\end{itemize}
+	\item [\BigSquare] \textbf{Unpersönlich schreiben:} Kein 'ich'/'man'/'wir'/'uns', ausser im evtl. vorhandenen Vorwort.
+		\item [\BigSquare] \textbf{3-Wörter-Regel:} Bis aus drei Wörtern zusammengesetzte Substantive werden ohne Bindestrich geschrieben, ab vier wird sinnvoll geteilt.
+			\item [\FilledSmallCircle] Verboten: 'Ticket-Ersteller', 'Ticket-Bearbeiter', 'Klo-Deckel-Halter'
+			\item [\FilledSmallCircle] Stattdessen: 'Ticketersteller', 'Ticketbearbeiter', 'Klodeckelhalter'.
+\end{itemize}
+
+\paragraph{Quellen}
+
+\begin{itemize}
+	\item [\BigSquare] \textbf{Format anpassen}: Drei Buchstaben + Jahr + a/b/c.
+	\item [\BigSquare] \textbf{Speichern}: *.mht, notfalls *.png.
+	\item [\BigSquare] \textbf{Abbildungen}:
+			\begin{itemize}
+			\item [\FilledSmallCircle] Bevorzugt selbst neu zeichnen, dabei irrelevantes rauslassen, Basis-Quelle angeben ('[Src99a], veränderte Darstellung').
+			\item [\FilledSmallCircle] Nicht selbst gezeichnete: Quelle angeben.
+			\item [\FilledSmallCircle] Müssen mindestens ein Mal im Text referenzeirt sein. Wiederholungen vermeiden ('siehe', 'vergleiche', 'nach').
+		\end{itemize}
+	\item [\BigSquare] \textbf{Tabellen}: Müssen mindestens ein Mal im Text referenzeirt sein. Wiederholungen vermeiden ('siehe', 'vergleiche', 'nach').
+\end{itemize}
+
+\paragraph{Layout}
+
+\begin{itemize}
+	\item [\BigSquare] \textbf{Silbentrennung:} Ausschalten. Wenn Blocksatz als Folge davon zu kurz/lang für die Zeile wird den Satz umstellen.
+	\item [\BigSquare] \textbf{Seitenumbrüche:} Sinnvoll legen. Nicht mitten in einer Liste.
+	\item [\BigSquare] \textbf{Elemente trennen:} Abbildung nicht direkt folgend auf Tabelle und andersrum.
+\end{itemize}
+
+\end{document}\grid
+\grid
+
